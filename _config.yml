@@ -1,0 +1,8 @@
+title: JPInIT Oracle DBA Blog
+description: Practical Oracle DBA notes, scripts, and operational articles by Jeremy Perkins.
+theme: minima
+minima:
+  skin: auto
+show_excerpts: true
+header_pages:
+  - index.md
