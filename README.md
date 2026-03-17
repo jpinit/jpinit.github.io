@@ -1,0 +1,2 @@
+# jpinit.github.io
+Blog
