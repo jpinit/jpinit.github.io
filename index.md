@@ -1,6 +1,11 @@
+---
+layout: home
+title: JPInIT Oracle DBA Blog
+---
+
 # JPInIT Oracle DBA Blog
 
-This site contains practical Oracle Database administration notes, scripts, and technical articles focused on:
+Practical Oracle Database administration notes, scripts, and technical articles focused on:
 
 - Oracle Database (11g – 26ai)
 - Data Guard
