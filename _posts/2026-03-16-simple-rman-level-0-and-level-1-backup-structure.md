@@ -156,10 +156,10 @@ Less time mentally reverse engineering the scripts later when troubleshooting or
 
 ## Cron entry examples
 
-# Weekly Level 0 backup – Sunday at 03:00
+#### Weekly Level 0 backup – Sunday at 03:00
 0 3 * * 0 /home/oracle/work/scripts/backup_level_0.sh >> /home/oracle/work/logs/rman_level_0.log 2>&1
 
-# Daily Level 1 backup – Monday through Saturday at 03:00
+#### Daily Level 1 backup – Monday through Saturday at 03:00
 0 3 * * 1-6 /home/oracle/work/scripts/backup_level_1.sh >> /home/oracle/work/logs/rman_level_1.log 2>&1
 
 
