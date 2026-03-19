@@ -2,27 +2,42 @@ body {
   color: #000000;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6,
+p, li, ul, ol, blockquote {
   color: #000000;
 }
 
-p, li, ul, ol {
-  color: #000000;
-}
-
-code, pre {
-  color: #000000;
-}
-
-.highlight {
-  color: #000000;
-}
-
-/* keep links blue */
-a {
-  color: #0066cc;
-}
-
+/* Keep links blue */
+a,
 a:visited {
   color: #0066cc;
+}
+
+/* Code block container */
+pre,
+code,
+.highlight,
+.highlight pre,
+.highlighter-rouge,
+.highlighter-rouge .highlight {
+  color: #000000 !important;
+  background: #f5f5f5 !important;
+}
+
+/* Force all syntax-highlighted tokens to black */
+.highlight *,
+.highlighter-rouge *,
+pre *,
+code * {
+  color: #000000 !important;
+}
+
+/* Optional: make inline code plain */
+code {
+  background: #f5f5f5 !important;
+}
+
+/* Keep code blocks readable */
+pre {
+  overflow-x: auto;
 }
