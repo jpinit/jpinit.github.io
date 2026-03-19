@@ -33,7 +33,7 @@ The shell scripts provide the wrapper around the backup job containing
 
   TIP:  Setting OS parameter NLS_DATE_FORMAT will change the date format in RMAN output. Default is mm/dd/yyyy.
 
-## backup_level_0.sh script: 
+### backup_level_0.sh script: 
 
 ```
 #!/bin/sh
@@ -67,7 +67,7 @@ mailx -s "$HOST: RMAN Backup Level-0 Report" $REPORT_RECIPIENT
 exit
 ```
 
-## backup_level_1.sh script: 
+### backup_level_1.sh script: 
 
 ```
 #!/bin/sh
@@ -106,7 +106,7 @@ exit
 <br>
 The RMAN command file contains the actual backup commands. 
 
-## RMAN Level 0 script: 
+### RMAN Level 0 script: 
 ```
 run {
     allocate channel disk1 device type disk MAXPIECESIZE 20G format '/backup/oracle/testdb/rman/full/%U_%T';
@@ -121,7 +121,7 @@ run {
 }
 ```
 
-## RMAN Level 1 script:
+### RMAN Level 1 script:
 ```
 run {
     allocate channel disk1 device type disk MAXPIECESIZE 20G format '/backup/oracle/testdb/rman/incremental/%U_%T';
