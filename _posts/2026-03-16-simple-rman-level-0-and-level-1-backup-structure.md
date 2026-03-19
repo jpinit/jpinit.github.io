@@ -102,7 +102,8 @@ exit
 ```
 
 
-
+<br>
+<br>
 The RMAN command file contains the actual backup commands. 
 
 ## RMAN Level 0 script: 
