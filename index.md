@@ -2,6 +2,7 @@
 layout: home
 title: 
 ---
+<link rel="stylesheet" href="/assets/css/custom.css">
 
 Practical Oracle Database administration notes, scripts, and technical articles focused on:
 
