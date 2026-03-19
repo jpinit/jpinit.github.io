@@ -33,13 +33,82 @@ The shell scripts provide the wrapper around the backup job containing
 - calling RMAN
 - emailing
 
-## RMAN Level 0 script: 
+## backup_level_0.sh script: 
 
 ```bash
+#!/bin/sh
+
+# Specify a valid path to Oracle installation
+ORACLE_HOME=/app/oracle/product/19.3.0/dbhome_1
+export ORACLE_HOME
+
+PATH=/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:$ORACLE_HOME/bin
+export PATH
+
+# Oracle instance (SID) name that is being exported
+ORACLE_SID=testdb
+export ORACLE_SID
+
+DATE=`date '+%Y-%m-%d'`
+export DATE
+
+HOST=`uname -n`
+export HOST
+
+REPORT_RECIPIENT="\
+test@gmail.com\
+"
+
+rman target=/ log=/app/oracle/work/scripts/log/level0_output/testdb_full_bck_${DATE}.log @/app/oracle/work/scripts/rman/backup_level_0.rman
+
+cp /app/oracle/work/scripts/log/level0_output/testdb_full_bck_${DATE}.log /backup/oracle/testdb/rman/full
+
+
+# --------------------------------------------------
+# Email log file
+cat /app/oracle/work/scripts/log/level0_output/testdb_full_bck_${DATE}.log | \
+mailx -s "$HOST: RMAN Backup Level-0 Report" $REPORT_RECIPIENT
+
+exit
 ```
-## RMAN Level 0 script: 
+
+## backup_level_1.sh script: 
 
 ```bash
+#!/bin/sh
+
+# Specify a valid path to Oracle installation
+ORACLE_HOME=/app/oracle/product/19.3.0/dbhome_1
+export ORACLE_HOME
+
+PATH=/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:$ORACLE_HOME/bin
+export PATH
+
+# Oracle instance (SID) name that is being exported
+ORACLE_SID=testdb
+export ORACLE_SID
+
+DATE=`date '+%Y-%m-%d'`
+export DATE
+
+HOST=`uname -n`
+export HOST
+
+REPORT_RECIPIENT="\
+test@gmail.com\
+"
+
+rman target=/ log=/app/oracle/work/scripts/log/level1_output/testdb_incr_bck_${DATE}.log @/app/oracle/work/scripts/rman/backup_level_1.rman
+
+cp /app/oracle/work/scripts/log/level1_output/testdb_incr_bck_${DATE}.log /backup/oracle/testdb/rman/incremental
+
+
+# --------------------------------------------------
+# Email log file
+cat /app/oracle/work/scripts/log/level1_output/testdb_incr_bck_${DATE}.log | \
+mailx -s "$HOST: RMAN Backup Level-1 Report" $REPORT_RECIPIENT
+
+exit
 ```
 
 
