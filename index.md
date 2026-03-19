@@ -1,6 +1,6 @@
 ---
 layout: home
-title: Home
+title: 
 ---
 
 Practical Oracle Database administration notes, scripts, and technical articles focused on:
