@@ -20,6 +20,7 @@ Full script examples used in this article are available here:
 [JPInIT GitHub Repository – RMAN Scripts](https://github.com/jpinit/mystuff/tree/main/rman_scripts)
 
 
+
 ## Why separate the shell and RMAN files
 
 A split between `.sh` and `.rman` files makes maintenance easier.
