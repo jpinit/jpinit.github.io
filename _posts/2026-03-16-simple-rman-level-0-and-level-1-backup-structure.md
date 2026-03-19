@@ -39,21 +39,16 @@ The shell scripts provide the wrapper around the backup job containing
 #!/bin/sh
 
 # Specify a valid path to Oracle installation
-ORACLE_HOME=/app/oracle/product/19.3.0/dbhome_1
-export ORACLE_HOME
-
-PATH=/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:$ORACLE_HOME/bin
-export PATH
+export ORACLE_HOME=/app/oracle/product/19.3.0/dbhome_1
+export PATH=/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:$ORACLE_HOME/bin
 
 # Oracle instance (SID) name that is being exported
-ORACLE_SID=testdb
-export ORACLE_SID
+export ORACLE_SID=testdb
 
-DATE=`date '+%Y-%m-%d'`
-export DATE
+export DATE=`date '+%Y-%m-%d'`
+export NLS_DATE_FORMAT="YYYY-MM-DD HH24:MI:SS"
 
-HOST=`uname -n`
-export HOST
+export HOST=`uname -n`
 
 REPORT_RECIPIENT="\
 test@gmail.com\
@@ -78,21 +73,16 @@ exit
 #!/bin/sh
 
 # Specify a valid path to Oracle installation
-ORACLE_HOME=/app/oracle/product/19.3.0/dbhome_1
-export ORACLE_HOME
-
-PATH=/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:$ORACLE_HOME/bin
-export PATH
+export ORACLE_HOME=/app/oracle/product/19.3.0/dbhome_1
+export PATH=/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:$ORACLE_HOME/bin
 
 # Oracle instance (SID) name that is being exported
-ORACLE_SID=testdb
-export ORACLE_SID
+export ORACLE_SID=testdb
 
-DATE=`date '+%Y-%m-%d'`
-export DATE
+export DATE=`date '+%Y-%m-%d'`
+export NLS_DATE_FORMAT="YYYY-MM-DD HH24:MI:SS"
 
-HOST=`uname -n`
-export HOST
+export HOST=`uname -n`
 
 REPORT_RECIPIENT="\
 test@gmail.com\
