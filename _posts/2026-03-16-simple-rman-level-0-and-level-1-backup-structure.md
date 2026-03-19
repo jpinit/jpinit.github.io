@@ -31,6 +31,8 @@ The shell scripts provide the wrapper around the backup job containing
 - calling RMAN
 - emailing
 
+  TIP:  Setting OS parameter NLS_DATE_FORMAT will change the date format in RMAN output. Default is mm/dd/yyyy.
+
 ## backup_level_0.sh script: 
 
 ```bash
