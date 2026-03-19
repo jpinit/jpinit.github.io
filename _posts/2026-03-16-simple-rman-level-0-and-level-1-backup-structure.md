@@ -49,7 +49,20 @@ run {
     backup as copy current controlfile format '/backup/oracle/testdb/rman/full/controlfile_full_ctl%d_C_%T_%u';
 }
 ```
-
+RMAN Level 1 script:
+```sql
+run {
+    allocate channel disk1 device type disk MAXPIECESIZE 20G format '/backup/oracle/testdb/rman/incremental/%U_%T';
+    crosscheck archivelog all;
+    delete noprompt expired archivelog all;
+    backup incremental level 1 database
+    tag 'Incr_Tlb_Dfile_1_testdb'
+    archivelog from time 'SYSDATE-2'
+    tag 'Incr_Archive_testdb';
+    backup as copy spfile format '/backup/oracle/testdb/rman/incremental/spfile%d_C_%T_%u';
+    backup as copy current controlfile format '/backup/oracle/testdb/rman/incremental/controlfile_incr_ctl%d_C_%T_%u';
+}
+```
 
 ## Why separate level 0 and level 1 backups
 
