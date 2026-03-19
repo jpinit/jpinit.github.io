@@ -4,6 +4,11 @@ title: Posts
 permalink: /posts/
 ---
 
-# Posts
+{% for post in site.posts %}
+## [{{ post.title }}]({{ post.url }})
 
-Browse all published articles below.
+{{ post.date | date: "%B %-d, %Y" }}
+
+{{ post.excerpt }}
+
+{% endfor %}
