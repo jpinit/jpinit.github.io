@@ -6,3 +6,4 @@ minima:
 show_excerpts: true
 header_pages:
   - index.md
+  - posts.md
