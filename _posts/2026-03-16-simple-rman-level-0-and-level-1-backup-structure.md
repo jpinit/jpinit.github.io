@@ -35,7 +35,7 @@ The shell scripts provide the wrapper around the backup job containing
 
 The RMAN command file contains the actual backup commands. 
 
-RMAN Level 0 script: 
+## RMAN Level 0 script: 
 ```sql
 run {
     allocate channel disk1 device type disk MAXPIECESIZE 20G format '/backup/oracle/testdb/rman/full/%U_%T';
@@ -49,7 +49,8 @@ run {
     backup as copy current controlfile format '/backup/oracle/testdb/rman/full/controlfile_full_ctl%d_C_%T_%u';
 }
 ```
-RMAN Level 1 script:
+
+## RMAN Level 1 script:
 ```sql
 run {
     allocate channel disk1 device type disk MAXPIECESIZE 20G format '/backup/oracle/testdb/rman/incremental/%U_%T';
