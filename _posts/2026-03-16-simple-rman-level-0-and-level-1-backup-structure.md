@@ -33,6 +33,17 @@ The shell scripts provide the wrapper around the backup job containing
 - calling RMAN
 - emailing
 
+## RMAN Level 0 script: 
+
+```bash
+```
+## RMAN Level 0 script: 
+
+```bash
+```
+
+
+
 The RMAN command file contains the actual backup commands. 
 
 ## RMAN Level 0 script: 
@@ -65,6 +76,13 @@ run {
 }
 ```
 
+## Why use backup as copy
+Having a text backup of your spfile and controlfile can be invaluable in certain restore scenarios.
+What if you loss your entire server, and cannot remember the layout of your database files.  Is it on /u0??
+The backup controlfile will provide you the list of directories you need to recreate for the restore.
+Other valuable information,  location of redo logs, archivelogs, and initialization parameters values.
+
+
 ## Why separate level 0 and level 1 backups
 
 There is also value in keeping level 0 and level 1 backups in separate files.
@@ -86,9 +104,7 @@ It is not meant to be a complete enterprise backup framework. It is meant to be 
 
 ## Final thought
 
-A good RMAN design does not always need to be complex. 
-In many cases, a clean and predictable script structure is more valuable
-than an overengineered solution.
+A good RMAN backup does not need to be complex. 
+This backup process is easy to operate, review, and maintain.
+Tweak as needed.
 
-
-If the backup files are named clearly and the shell wrapper is kept separate from the RMAN commands, the result is a backup process that is easier to operate, review, and maintain.
