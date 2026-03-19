@@ -100,8 +100,8 @@ mailx -s "$HOST: RMAN Backup Level-1 Report" $REPORT_RECIPIENT
 
 exit
 ```
-
-
+<br>
+<br>
 <br>
 <br>
 The RMAN command file contains the actual backup commands. 
