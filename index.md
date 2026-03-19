@@ -1,9 +1,7 @@
 ---
 layout: home
-title: JPInIT Oracle DBA Blog
+title: Home
 ---
-
-# JPInIT Oracle DBA Blog
 
 Practical Oracle Database administration notes, scripts, and technical articles focused on:
 
