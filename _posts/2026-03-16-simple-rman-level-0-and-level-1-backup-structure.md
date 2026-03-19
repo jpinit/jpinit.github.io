@@ -35,7 +35,7 @@ The shell scripts provide the wrapper around the backup job containing
 
 ## backup_level_0.sh script: 
 
-```bash
+```
 #!/bin/sh
 
 # Specify a valid path to Oracle installation
@@ -69,7 +69,7 @@ exit
 
 ## backup_level_1.sh script: 
 
-```bash
+```
 #!/bin/sh
 
 # Specify a valid path to Oracle installation
@@ -106,7 +106,7 @@ exit
 The RMAN command file contains the actual backup commands. 
 
 ## RMAN Level 0 script: 
-```sql
+```
 run {
     allocate channel disk1 device type disk MAXPIECESIZE 20G format '/backup/oracle/testdb/rman/full/%U_%T';
     crosscheck archivelog all;
@@ -121,7 +121,7 @@ run {
 ```
 
 ## RMAN Level 1 script:
-```sql
+```
 run {
     allocate channel disk1 device type disk MAXPIECESIZE 20G format '/backup/oracle/testdb/rman/incremental/%U_%T';
     crosscheck archivelog all;
