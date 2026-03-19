@@ -9,10 +9,10 @@ No need for a complicated backup to get started.
 
 In my RMAN scripts repository, I use a straightforward structure with separate files for level 0 and level 1 backups. 
 The directory currently includes these files:
-    - `backup_level_0.sh`
-    - `backup_level_0.rman`
-    - `backup_level_1.sh`
-    - `backup_level_1.rman`
+- `backup_level_0.sh`
+- `backup_level_0.rman`
+- `backup_level_1.sh`
+- `backup_level_1.rman`
 
 This layout keeps the backup logic easy to follow and setup in cron.
 
