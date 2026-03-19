@@ -26,10 +26,10 @@ Full script examples used in this article are available here:
 A split between `.sh` and `.rman` files makes maintenance easier.
 
 The shell scripts provide the wrapper around the backup job containing
-    - environment variables
-    - log file naming
-    - calling RMAN
-    - emailing
+- environment variables
+- log file naming
+- calling RMAN
+- emailing
 
 ## backup_level_0.sh script: 
 
@@ -151,10 +151,10 @@ Less time mentally reverse engineering the scripts later when troubleshooting or
 ## Benefits of using this simple structure
 
 This kind of layout has a few practical advantages:
-    - easy to troubleshoot
-    - easy to hand off to another DBA
-    - simple to schedule from cron or enterprise schedulers
-    - clear separation between OS script and RMAN commands
+- easy to troubleshoot
+- easy to hand off to another DBA
+- simple to schedule from cron or enterprise schedulers
+- clear separation between OS script and RMAN commands
 
 
 ## Final thought
