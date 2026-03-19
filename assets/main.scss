@@ -1,0 +1,65 @@
+---
+---
+
+@import "minima";
+
+/* Global text */
+body,
+.site-title,
+.site-title:visited,
+.site-nav .page-link,
+.page-content,
+.post-content,
+.post-title,
+.post-link,
+h1, h2, h3, h4, h5, h6,
+p, li, ul, ol, blockquote {
+  color: #000000 !important;
+}
+
+/* Keep links blue */
+a,
+a:visited,
+.post-link,
+.post-link:visited {
+  color: #0066cc !important;
+}
+
+/* Code blocks */
+pre,
+code,
+.highlighter-rouge,
+.highlighter-rouge .highlight,
+.highlight,
+.highlight pre {
+  color: #000000 !important;
+  background: #f5f5f5 !important;
+  border: 1px solid #dcdcdc !important;
+}
+
+/* Force all syntax token colors to black */
+.highlight *,
+.highlighter-rouge *,
+pre *,
+code * {
+  color: #000000 !important;
+}
+
+/* Inline code */
+:not(pre) > code {
+  color: #000000 !important;
+  background: #f5f5f5 !important;
+  border: 1px solid #dcdcdc !important;
+}
+
+/* Footer */
+.site-footer,
+.footer-heading,
+.footer-col-wrapper,
+.footer-col,
+.social-media-list,
+.contact-list {
+  color: #000000 !important;
+}
+
+/* No copy button exists by default in Minima */
