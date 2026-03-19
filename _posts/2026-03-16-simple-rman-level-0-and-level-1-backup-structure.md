@@ -4,34 +4,40 @@ title: "A Simple RMAN Level 0 and Level 1 Backup Script Structure"
 date: 2026-03-16
 categories: oracle rman backup
 ---
-
-Many Oracle backup environments do not need a complicated framework to get started. 
-In smaller environments, or in situations where clarity matters more than abstraction,
-a simple pairing of shell scripts and RMAN command files can be enough.
+I've put together a set of simple RMAN level 0 and level 1 scripts that can be put in cron.
+No need for a complicated backup to get started.
 
 In my RMAN scripts repository, I use a straightforward structure with separate files for level 0 and level 1 backups. 
 The directory currently includes these files:
 
-- `backup_level_0.rman`
 - `backup_level_0.sh`
-- `backup_level_1.rman`
+- `backup_level_0.rman`
 - `backup_level_1.sh`
+- `backup_level_1.rman`
 
-This layout keeps the backup logic easy to follow.
+This layout keeps the backup logic easy to follow and setup in cron.
+
+Full script examples used in this article are available here:
+    JPinIT GitHub Repository  
+    https://github.com/jpinit/mystuff/tree/main/rman_scripts
+
 
 ## Why separate the shell and RMAN files
 
-A simple split between `.sh` and `.rman` files makes administration easier.
+A split between `.sh` and `.rman` files makes maintenance easier.
 
-The shell script is a good place for the operational wrapper around the backup job, such as:
+The shell scripts provide the wrapper around the backup job containing
 
-- environment setup
-- Oracle home and SID handling
+- environment variables
 - log file naming
-- scheduler integration
 - calling RMAN
+- emailing
 
-The RMAN command file is a good place for the actual backup commands. Keeping that logic in its own file makes it easier to read, adjust, and reuse.
+The RMAN command file contains the actual backup commands. 
+
+```sql
+```
+
 
 ## Why separate level 0 and level 1 backups
 
