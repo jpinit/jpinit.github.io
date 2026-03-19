@@ -14,7 +14,7 @@ The directory includes these files:
 - `backup_level_1.sh`
 - `backup_level_1.rman`
 
-This layout keeps the backup logic easy to follow and setup in cron.
+This layout keeps the backup logic easy to follow and schedule in cron.
 
 Full script examples used in this article are available here: 
 [JPInIT GitHub Repository – RMAN Scripts](https://github.com/jpinit/mystuff/tree/main/rman_scripts)
@@ -31,8 +31,8 @@ The shell scripts provide the wrapper around the backup job containing
 - calling RMAN
 - emailing
 
-  TIP:  Setting OS parameter NLS_DATE_FORMAT will change the date format in RMAN output. Default is mm/dd/yyyy.
-
+  TIP:  Setting OS parameter NLS_DATE_FORMAT will change the timestamp format in RMAN output.
+  
 ### backup_level_0.sh script: 
 
 ```
@@ -119,6 +119,9 @@ run {
     backup as copy spfile format '/backup/oracle/testdb/rman/full/spfile%d_C_%T_%u';
     backup as copy current controlfile format '/backup/oracle/testdb/rman/full/controlfile_full_ctl%d_C_%T_%u';
 }
+run {
+  alter database backup controlfile to trace as '/backup/oracle/testdb/rman/full/controlfile_trace.sql' reuse;
+}
 ```
 
 ### RMAN Level 1 script:
@@ -136,11 +139,11 @@ run {
 }
 ```
 
-## Why use backup as copy
-Having a text backup of your spfile and controlfile can be invaluable in certain restore scenarios.
-What if you loss your entire server, and cannot remember the layout of your database files.  Is it on /u0??
+## Why backup controlfile to trace
+Having a text backup of your controlfile can be invaluable in certain restore scenarios.
+What if you lose your entire server, and cannot remember the layout of your database files.  Is it on /u0??
 The backup controlfile will provide you the list of directories you need to recreate for the restore.
-Other valuable information,  location of redo logs, archivelogs, and initialization parameters values.
+Other valuable information,  location of redo logs, archivelogs, and initialization parameter values are in the spfile backup.
 
 
 ## level 0 and level 1 backups explained
@@ -149,6 +152,15 @@ A level 1 backup is the INCREMENTAL used to capture changes since the level 0 or
 
 I keep these in separate files so that backup intent is obvious at a glance.
 Less time mentally reverse engineering the scripts later when troubleshooting or making modifications.
+
+
+## Cron entry examples
+
+# Weekly Level 0 backup – Sunday at 03:00
+0 3 * * 0 /home/oracle/work/scripts/backup_level_0.sh >> /home/oracle/work/logs/rman_level_0.log 2>&1
+
+# Daily Level 1 backup – Monday through Saturday at 03:00
+0 3 * * 1-6 /home/oracle/work/scripts/backup_level_1.sh >> /home/oracle/work/logs/rman_level_1.log 2>&1
 
 
 ## Benefits of using this simple structure
