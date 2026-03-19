@@ -168,7 +168,7 @@ Less time mentally reverse engineering the scripts later when troubleshooting or
 This kind of layout has a few practical advantages:
 - easy to troubleshoot
 - easy to hand off to another DBA
-- simple to schedule from cron or enterprise schedulers
+- simple to schedule from cron
 - clear separation between OS script and RMAN commands
 
 
