@@ -16,9 +16,8 @@ The directory currently includes these files:
 
 This layout keeps the backup logic easy to follow and setup in cron.
 
-Full script examples used in this article are available here:
-    JPinIT GitHub Repository  
-    https://github.com/jpinit/mystuff/tree/main/rman_scripts
+Full script examples used in this article are available here: 
+[JPInIT GitHub Repository – RMAN Scripts](https://github.com/jpinit/mystuff/tree/main/rman_scripts)
 
 
 ## Why separate the shell and RMAN files
