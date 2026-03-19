@@ -35,7 +35,19 @@ The shell scripts provide the wrapper around the backup job containing
 
 The RMAN command file contains the actual backup commands. 
 
+RMAN Level 0 script: 
 ```sql
+run {
+    allocate channel disk1 device type disk MAXPIECESIZE 20G format '/backup/oracle/testdb/rman/full/%U_%T';
+    crosscheck archivelog all;
+    delete noprompt expired archivelog all;
+    backup incremental level 0 database
+    tag 'Full_Tlb_Dfile_0_testdb'
+    archivelog from time 'SYSDATE-1'
+    tag 'Full_Archive_testdb';
+    backup as copy spfile format '/backup/oracle/testdb/rman/full/spfile%d_C_%T_%u';
+    backup as copy current controlfile format '/backup/oracle/testdb/rman/full/controlfile_full_ctl%d_C_%T_%u';
+}
 ```
 
 
