@@ -2,6 +2,7 @@
 layout: post
 title: "A Simple RMAN Level 0 and Level 1 Backup Script Structure"
 date: 2026-03-16
+author: Jeremy Perkins
 categories: oracle rman backup
 ---
 I've put together a set of simple RMAN level 0 and level 1 scripts that can be put in cron.
