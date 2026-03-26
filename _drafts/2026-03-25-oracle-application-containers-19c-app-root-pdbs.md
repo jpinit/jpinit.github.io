@@ -8,6 +8,7 @@ tags: oracle multitenant application-container pdb cdb 19c
 
 ## Summary
 
+
 Learn how to create and manage Oracle Application Containers in 19c, including application root, seed, and PDB lifecycle using real DBA commands with validation.
 
 ---
