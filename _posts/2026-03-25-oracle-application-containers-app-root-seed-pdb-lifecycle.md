@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Oracle Application Containers in 19c: Application Root, Seed, and PDB Lifecycle Deep Dive"
+title: "Oracle Application Containers 19c: Creating and Managing App Roots and PDBs"
 date: 2026-03-25
 categories: oracle rdbms dba
 tags: oracle multitenant application-container pdb cdb 19c
