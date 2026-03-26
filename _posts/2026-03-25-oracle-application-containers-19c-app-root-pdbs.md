@@ -7,7 +7,6 @@ author: Jeremy Perkins
 categories: oracle multitenant pdb
 robots: noindex
 hidden: true
-#published: false
 ---
 
 Oracle Application Containers are one of those features that sound simple on paper but are often misunderstood in practice.
@@ -53,6 +52,8 @@ ALTER SESSION SET CONTAINER=app_root;
 The application seed acts as a template for all application PDBs.
 
 ```sql
+ALTER SESSION SET CONTAINER=app_root;
+
 CREATE PLUGGABLE DATABASE app_seed FROM app_root AS SEED;
 ```
 
@@ -69,6 +70,8 @@ ALTER PLUGGABLE DATABASE app_seed OPEN;
 Now create a PDB from the application seed.
 
 ```sql
+ALTER SESSION SET CONTAINER=app_root;
+
 CREATE PLUGGABLE DATABASE app_pdb1 FROM app_seed;
 ```
 
@@ -99,13 +102,18 @@ ALTER PLUGGABLE DATABASE app_root
 END INSTALL;
 ```
 
+Check application registration:
+
+```sql
+SELECT app_name, app_version, app_status 
+FROM dba_applications;
+```
+
 ---
 
 ## Synchronizing the Application PDB
 
-The PDB will not automatically receive the application objects.
-
-You must run SYNC:
+The application PDB will not automatically receive application objects until SYNC is executed.
 
 ```sql
 ALTER SESSION SET CONTAINER=app_pdb1;
@@ -113,16 +121,11 @@ ALTER SESSION SET CONTAINER=app_pdb1;
 ALTER PLUGGABLE DATABASE app_pdb1 SYNC;
 ```
 
+Without SYNC, the PDB will remain at its previous application version.
+
 ---
 
 ## Verifying the Application
-
-Check application registration:
-
-```sql
-SELECT app_name, app_version, app_status 
-FROM dba_applications;
-```
 
 Confirm container context:
 
