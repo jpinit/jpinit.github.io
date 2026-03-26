@@ -2,7 +2,8 @@
 layout: post
 filename: 2026-03-25-oracle-application-containers-19c-app-root-pdbs.md
 title: "Oracle Application Containers 19c: Creating and Managing App Roots and PDBs"
-date: 2026-03-25
+date: 2099-01-01
+#date: 2026-03-25
 author: Jeremy Perkins
 categories: oracle multitenant pdb
 robots: noindex
