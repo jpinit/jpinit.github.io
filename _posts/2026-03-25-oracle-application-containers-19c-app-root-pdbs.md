@@ -6,7 +6,8 @@ date: 2026-03-25
 author: Jeremy Perkins
 categories: oracle multitenant pdb
 robots: noindex
-published: false
+hidden: true
+#published: false
 ---
 
 Oracle Application Containers are one of those features that sound simple on paper but are often misunderstood in practice.
