@@ -29,7 +29,7 @@ This lab will serve as the foundation for all future posts (Data Guard, RMAN, RH
 
 ## Licensing (READ THIS FIRST)
 
-Oracle provides software under OTN for **free personal use** with strict limitations:
+Oracle provides software under OTN for free personal use with strict limitations:
 
 - Allowed:
   - Personal learning  
@@ -41,7 +41,7 @@ Oracle provides software under OTN for **free personal use** with strict limitat
   - Commercial/business use  
   - Any revenue-generating activity  
 
-There is no enforced expiration, but usage must remain within these terms.
+This lab must remain isolated and cannot be used for any business purpose.
 
 ---
 
@@ -55,79 +55,66 @@ There is no enforced expiration, but usage must remain within these terms.
 
 ---
 
-## Install Oracle VirtualBox
-
-Download and install:
-
-https://www.virtualbox.org
-
----
-
 ## Create Virtual Machine
 
 Example configuration:
 
 - Name: OL9-26AI-SI-LAB01  
 - Type: Linux  
-- Memory: 8GB (minimum)  
+- Memory: 8GB  
 - CPU: 2–4 cores  
-- Disk: 100GB  
+- Disk: 100GB (VDI, dynamically allocated)  
+- Network: NAT  
 
 ---
 
 ## Install Oracle Linux
 
-- Use Oracle Linux 9 ISO  
-- Minimal install is sufficient  
+- Oracle Linux 9 minimal install  
 - Set hostname:
 
-```
+```bash
 hostnamectl set-hostname ol9-26ai-si-lab01
+```
+
+---
+
+## Prepare OS for Oracle
+
+There is currently no 26ai-specific preinstall package, so we use the 19c preinstall package for OS configuration.
+
+```bash
+dnf install -y oracle-database-preinstall-19c
 ```
 
 ---
 
 ## Install Oracle Database 26ai
 
-Run preinstall:
+Install software into:
 
-```bash
-dnf install -y oracle-database-preinstall-19c
 ```
-
-Install database software (example path):
-
-```bash
 /u01/app/oracle/product/26.0.0/dbhome_1
 ```
 
 ---
 
-## Create Container Database
+## Create Database Using DBCA
 
-```sql
-CREATE DATABASE DBTEST
-ENABLE PLUGGABLE DATABASE;
+Use DBCA to create a container database:
+
+```bash
+dbca
 ```
+
+Configuration:
+- CDB name: DBTEST  
+- Enable PDB creation  
+- Create PDB1 and PDB2  
 
 ---
 
-## Create PDBs
-
-```sql
-CREATE PLUGGABLE DATABASE pdb1 ADMIN USER pdbadmin IDENTIFIED BY password;
-CREATE PLUGGABLE DATABASE pdb2 ADMIN USER pdbadmin IDENTIFIED BY password;
-```
-
-Open PDBs:
-
-```sql
-ALTER PLUGGABLE DATABASE ALL OPEN;
-```
-
----
-
-## Validation
+## Validate Database
 
 ```sql
 SELECT name, open_mode FROM v$pdbs;
@@ -148,28 +135,17 @@ shutdown -h now
 ```
 
 On host:
-
 - Copy entire VM directory  
 OR  
-- Use VirtualBox export:
-
-```
-File → Export Appliance
-```
-
-This allows full restore of your lab environment.
+- Export appliance via VirtualBox  
 
 ---
 
 ## Restore VM
 
-Import appliance:
+Import appliance and start VM.
 
-```
-File → Import Appliance
-```
-
-Start VM and verify database:
+Validate database:
 
 ```sql
 SELECT name FROM v$database;
@@ -181,7 +157,7 @@ SELECT name FROM v$database;
 
 Use consistent naming for all future labs.
 
-### Format
+Format:
 
 ```
 <OS>-<DB>-<TYPE>-<FEATURE>-<LAB#>
@@ -193,7 +169,7 @@ Use consistent naming for all future labs.
 
 | Name | Meaning |
 |------|--------|
-| OL9-26AI-SI-LAB01 | Linux, 26ai, Single Instance |
+| OL9-26AI-SI-LAB01 | Single instance |
 | OL9-26AI-RAC-LAB01 | RAC cluster |
 | OL9-26AI-SI-DG-LAB01 | Data Guard primary |
 | OL9-26AI-SI-DG-LAB02 | Data Guard standby |
@@ -202,24 +178,24 @@ Use consistent naming for all future labs.
 
 ## What Most DBAs Miss
 
-- OTN license is NOT production-safe  
+- OTN license is not production-safe  
 - Lab environments must remain isolated  
-- Snapshots are not backups — export VM regularly  
-- Naming matters as lab complexity grows  
+- Snapshots are not backups — export regularly  
+- Naming becomes critical as labs scale  
 
 ---
 
 ## Real-World Notes
 
-- Always snapshot BEFORE major changes  
-- Keep one “clean baseline” VM  
-- Clone instead of rebuilding  
-- Treat lab like production (naming, structure, discipline)  
+- Snapshot before major changes  
+- Keep a clean baseline image  
+- Clone instead of rebuild  
+- Treat lab environments like production  
 
 ---
 
 ## Final Thought
 
-A properly built lab is not just a learning tool — it becomes your personal testing platform for every Oracle feature you work with.
+A properly built lab becomes the foundation for everything that follows.
 
-Done correctly, this one VM becomes the foundation for everything that follows.
+Build it once, build it right, and reuse it for every future Oracle test scenario.
