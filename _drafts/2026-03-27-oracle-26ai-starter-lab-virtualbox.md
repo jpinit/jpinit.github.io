@@ -17,7 +17,6 @@ Reference: https://www.oracle.com/downloads/licenses/standard-license.html
 Walk-through : creating an Oracle 26ai lab using Oracle VirtualBox.
 
 ## Lab Architecture
-
 - Virtualization: Oracle VirtualBox 7.2.6
 - Operating System : Oracle Linux 9.7
 - Database: Oracle 26ai  (v23.26)
@@ -25,6 +24,11 @@ Walk-through : creating an Oracle 26ai lab using Oracle VirtualBox.
 - Container Database: DBTEST  
 - PDBs: PDB1, PDB2  
 
+## Lab Configuration
+VM OS Users:    vboxuser  password: Oracle1!
+                oracle    password: Oracle1!
+Oracle users:   sys       password: Oracle1!
+                system    password: Oracle1!
 
 ## Section I : Create Virtual Machine
 
@@ -39,6 +43,10 @@ Example configuration:
 
 1) Install Oracle VirtualBox
 <img src="/assets/images/blog/starter-lab/1.1-Screenshot 2026-03-31 225724.png" width="600">
+
+
+
+
 
 2) create VM  configuration
 
@@ -57,10 +65,12 @@ hostnamectl set-hostname ol9-26ai-lab01
 
 ## Prepare OS for Oracle
 
-There is currently no 26ai-specific preinstall package, so we use the 19c preinstall package for OS configuration.
+As root install the 26ai-specific preinstall package;  this handles OS configuration and user creation.
 
 ```bash
-dnf install -y oracle-database-preinstall-19c
+sudo su -
+dnf install oracle-ai-database-preinstall-26ai
+
 ```
 
 ---
