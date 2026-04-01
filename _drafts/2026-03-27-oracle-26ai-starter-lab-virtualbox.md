@@ -2,13 +2,9 @@
 layout: post
 filename: 2026-03-27-oracle-26ai-starter-lab-virtualbox.md
 title: "Oracle 26ai Starter Lab: Building a Free, License-Compliant VirtualBox Environment"
-date: 2099-01-01
-#date: 2026-03-27
+date: 2026-03-27
 author: Jeremy Perkins
 categories: oracle lab virtualization
-robots: noindex
-hidden: true
-#published: false
 ---
 
 Building a personal Oracle lab is one of the most valuable things you can do as a DBA, but it must be done correctly to avoid violating licensing.
@@ -42,6 +38,10 @@ Oracle provides software under OTN for free personal use with strict limitations
   - Any revenue-generating activity  
 
 This lab must remain isolated and cannot be used for any business purpose.
+
+The OTN license does not expire, but usage restrictions apply indefinitely.
+
+Cloned VMs, snapshots, and backups are all subject to the same licensing terms.
 
 ---
 
@@ -160,8 +160,21 @@ Use consistent naming for all future labs.
 Format:
 
 ```
-<OS>-<DB>-<TYPE>-<FEATURE>-<LAB#>
+<OS>-<DB>-<TYPE>-<FEATURE>-<ROLE>-<LAB#>
 ```
+
+---
+
+### Naming Matrix
+
+| Component | Values |
+|----------|--------|
+| OS | OL8, OL9 |
+| DB | 19C, 23AI, 26AI |
+| TYPE | SI, RAC |
+| FEATURE | NONE, DG, RHP |
+| ROLE | PRIMARY, STANDBY, NODE1, NODE2 |
+| LAB# | LAB01, LAB02 |
 
 ---
 
@@ -169,10 +182,11 @@ Format:
 
 | Name | Meaning |
 |------|--------|
-| OL9-26AI-SI-LAB01 | Single instance |
-| OL9-26AI-RAC-LAB01 | RAC cluster |
-| OL9-26AI-SI-DG-LAB01 | Data Guard primary |
-| OL9-26AI-SI-DG-LAB02 | Data Guard standby |
+| OL9-26AI-SI-NONE-LAB01 | Base lab |
+| OL9-26AI-SI-DG-PRIMARY-LAB01 | Data Guard primary |
+| OL9-26AI-SI-DG-STANDBY-LAB02 | Data Guard standby |
+| OL9-26AI-RAC-NODE1-LAB01 | RAC node 1 |
+| OL9-26AI-RAC-NODE2-LAB01 | RAC node 2 |
 
 ---
 
