@@ -7,7 +7,12 @@ author: Jeremy Perkins
 categories: oracle lab virtualization
 ---
 
-Building a personal Oracle lab is one of the most valuable things you can do as a DBA, but it must be done correctly to avoid violating licensing.
+Do you wish you had an Oracle environment to call your own?
+Owning a personal Oracle database lab is a valuable tool for a DBA.
+
+But can you have such a thing?  Yes.
+Oracle Technology Network (OTN) provides non-commercial licensing for just this purpose.
+Reference: https://www.oracle.com/downloads/licenses/standard-license.html
 
 This post walks through creating a fully functional Oracle 26ai lab using Oracle VirtualBox, while staying compliant with Oracle Technology Network (OTN) licensing.
 
