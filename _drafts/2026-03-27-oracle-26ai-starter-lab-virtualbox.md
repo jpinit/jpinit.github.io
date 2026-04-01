@@ -11,75 +11,46 @@ Do you wish you had an Oracle environment to call your own?
 Owning a personal Oracle database lab is a valuable tool for a DBA.
 
 But can you have such a thing?  Yes.
-Oracle Technology Network (OTN) provides non-commercial licensing for just this purpose.
+Oracle Technology Network (OTN) provides non-commercial licensing.
 Reference: https://www.oracle.com/downloads/licenses/standard-license.html
 
-This post walks through creating a fully functional Oracle 26ai lab using Oracle VirtualBox, while staying compliant with Oracle Technology Network (OTN) licensing.
-
-This lab will serve as the foundation for all future posts (Data Guard, RMAN, RHP, etc).
-
----
-
-## What This Solves
-
-- Safe Oracle learning environment without licensing risk  
-- Repeatable lab build for future testing  
-- Foundation for advanced configurations (Data Guard, RAC, etc)  
-
----
-
-## Licensing (READ THIS FIRST)
-
-Oracle provides software under OTN for free personal use with strict limitations:
-
-- Allowed:
-  - Personal learning  
-  - Non-commercial use  
-  - Local lab environments  
-
-- NOT allowed:
-  - Production use  
-  - Commercial/business use  
-  - Any revenue-generating activity  
-
-This lab must remain isolated and cannot be used for any business purpose.
-
-The OTN license does not expire, but usage restrictions apply indefinitely.
-
-Cloned VMs, snapshots, and backups are all subject to the same licensing terms.
-
----
+Walk-through : creating an Oracle 26ai lab using Oracle VirtualBox.
 
 ## Lab Architecture
 
-- Virtualization: Oracle VirtualBox  
-- Database: Oracle 26ai  
-- Type: Single Instance (non-RAC)  
+- Virtualization: Oracle VirtualBox 7.2.6
+- Operating System : Oracle Linux 9.7
+- Database: Oracle 26ai  (v23.26)
+- Type: Single Instance (non-RAC non-ASM)  
 - Container Database: DBTEST  
 - PDBs: PDB1, PDB2  
 
----
 
-## Create Virtual Machine
+## Section I : Create Virtual Machine
 
 Example configuration:
 
-- Name: OL9-26AI-SI-LAB01  
+- Name: OL9-26AI-LAB01  
 - Type: Linux  
 - Memory: 8GB  
 - CPU: 2–4 cores  
-- Disk: 100GB (VDI, dynamically allocated)  
+- Disk: 50GB (VDI, dynamically allocated)  
 - Network: NAT  
+
+1) Install Oracle VirtualBox
+<img src="/assets/images/blog/starter-lab/1.1-Screenshot 2026-03-31 225724.png" width="600">
+
+2) create VM  configuration
 
 ---
 
-## Install Oracle Linux
+## Section II : Install Oracle Linux
 
 - Oracle Linux 9 minimal install  
 - Set hostname:
 
 ```bash
-hostnamectl set-hostname ol9-26ai-si-lab01
+hostnamectl set-hostname ol9-26ai-lab01
 ```
 
 ---
@@ -200,21 +171,19 @@ Format:
 - OTN license is not production-safe  
 - Lab environments must remain isolated  
 - Snapshots are not backups — export regularly  
-- Naming becomes critical as labs scale  
-
----
-
-## Real-World Notes
-
-- Snapshot before major changes  
-- Keep a clean baseline image  
-- Clone instead of rebuild  
-- Treat lab environments like production  
 
 ---
 
 ## Final Thought
 
-A properly built lab becomes the foundation for everything that follows.
+A properly built lab is a great foundation for DBAs to hone skills.
+Take advantage of the VM snapshotting technology 
+Build it once, build it right, and reuse it often.
 
-Build it once, build it right, and reuse it for every future Oracle test scenario.
+
+- Backup your VMs (do not rely solely on snapshots)
+- Keep a clean baseline image of your VM  
+- Clone your base VM instead of rebuilding each time  
+- Snapshot before making major changes.  
+- VM Naming becomes critical as number of Vms grow
+
